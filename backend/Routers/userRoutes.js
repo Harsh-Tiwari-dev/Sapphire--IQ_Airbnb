@@ -1,5 +1,14 @@
 import express from "express";
-import { registerUser, loginUser } from "../controllers/userController.js";
+import passport from "passport";
+
+import {
+  registerUser,
+  loginUser,
+  logoutUser,
+  getCurrentUser,
+} from "../Controller/userController.js";
+
+import authMiddleware from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
@@ -7,6 +16,16 @@ const router = express.Router();
 router.post("/register", registerUser);
 
 // Login
-router.post("/login", loginUser);
+router.post(
+  "/login",
+  passport.authenticate("local"),
+  loginUser
+);
+
+// Logout
+router.post("/logout", authMiddleware, logoutUser);
+
+// Current logged-in user
+router.get("/me", authMiddleware, getCurrentUser);
 
 export default router;

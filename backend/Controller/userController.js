@@ -1,7 +1,7 @@
-import User from "../models/User.js";
+import User from "../Models/User.js";
 import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
 
+// Register User
 export const registerUser = async (req, res) => {
   try {
     const { name, email, password, role } = req.body;
@@ -25,50 +25,6 @@ export const registerUser = async (req, res) => {
 
     res.status(201).json({
       message: "User registered successfully",
-      user,
-    });
-  } catch (error) {
-    res.status(500).json({
-      message: error.message,
-    });
-  }
-};
-
-export const loginUser = async (req, res) => {
-  try {
-    const { email, password } = req.body;
-
-    const user = await User.findOne({ email });
-
-    if (!user) {
-      return res.status(404).json({
-        message: "User not found",
-      });
-    }
-
-    const isPasswordCorrect = await bcrypt.compare(
-      password,
-      user.password
-    );
-
-    if (!isPasswordCorrect) {
-      return res.status(401).json({
-        message: "Invalid email or password",
-      });
-    }
-
-    const token = jwt.sign(
-      {
-        userId: user._id,
-        role: user.role,
-      },
-      process.env.JWT_SECRET,
-      { expiresIn: "7d" }
-    );
-
-    res.status(200).json({
-      message: "Login successful",
-      token,
       user: {
         id: user._id,
         name: user.name,
@@ -81,4 +37,50 @@ export const loginUser = async (req, res) => {
       message: error.message,
     });
   }
+};
+
+// Login User
+export const loginUser = (req, res) => {
+  res.status(200).json({
+    message: "Login successful",
+    user: req.user,
+  });
+};
+
+// Logout User
+export const logoutUser = (req, res) => {
+  req.logout((error) => {
+    if (error) {
+      return res.status(500).json({
+        message: error.message,
+      });
+    }
+
+    req.session.destroy((error) => {
+      if (error) {
+        return res.status(500).json({
+          message: error.message,
+        });
+      }
+
+      res.clearCookie("connect.sid");
+
+      res.status(200).json({
+        message: "Logout successful",
+      });
+    });
+  });
+};
+
+// Get Current User
+export const getCurrentUser = (req, res) => {
+  if (!req.isAuthenticated()) {
+    return res.status(401).json({
+      message: "Not authenticated",
+    });
+  }
+
+  res.status(200).json({
+    user: req.user,
+  });
 };

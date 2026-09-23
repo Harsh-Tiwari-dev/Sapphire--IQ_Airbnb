@@ -1,13 +1,39 @@
 import express from "express";
+import dotenv from "dotenv";
+import session from "express-session";
+import passport from "../Config/passport.js";
 
-import userRoutes from "./userRoutes.js";
-import propertyRoutes from "./propertyRoutes.js";
-import bookingRoutes from "./bookingRoutes.js";
+import connectDB from "./db.js";
+import routes from "./Routers/index.js";
 
-const router = express.Router();
+dotenv.config();
 
-router.use("/api/users", userRoutes);
-router.use("/api/properties", propertyRoutes);
-router.use("/api/bookings", bookingRoutes);
+const app = express();
 
-export default router;
+// MongoDB
+connectDB();
+
+// Body parser
+app.use(express.json());
+
+// Session
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+// Passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Routes
+app.use("/api", routes);
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
