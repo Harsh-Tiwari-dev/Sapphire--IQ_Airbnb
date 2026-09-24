@@ -4,7 +4,7 @@ import {
   createBooking,
   getMyBookings,
   cancelBooking,
-} from "../controllers/bookingController.js";
+} from "../Controller/bookingController.js";
 
 import authMiddleware from "../middleware/authMiddleware.js";
 

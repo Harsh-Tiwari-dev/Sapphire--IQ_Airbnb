@@ -6,7 +6,7 @@ import {
   deleteReview,
 } from "../Controller/reviewController.js";
 
-import authMiddleware from "./Middleware/authMiddleware.js";
+import authMiddleware from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 

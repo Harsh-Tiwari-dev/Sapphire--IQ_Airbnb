@@ -6,7 +6,7 @@ import {
   getProperty,
   updateProperty,
   deleteProperty,
-} from "../controllers/propertyController.js";
+} from "../Controller/propertyController.js";
 
 import authMiddleware from "../middleware/authMiddleware.js";
 

@@ -1,9 +1,9 @@
 import express from "express";
 import dotenv from "dotenv";
 import session from "express-session";
-import passport from "../Config/passport.js";
+import passport from "./config/passport.js";
 
-import connectDB from "./db.js";
+import connectDB from "./config/db.js";
 import routes from "./Routers/index.js";
 
 dotenv.config();

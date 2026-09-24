@@ -1,5 +1,5 @@
-import Booking from "../models/Booking.js";
-import Property from "../models/Property.js";
+import Booking from "../models/Booking.model.js";
+import Property from "../models/Property.model.js";
 
 // Create Booking
 export const createBooking = async (req, res) => {
