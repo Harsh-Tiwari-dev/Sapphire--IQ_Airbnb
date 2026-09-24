@@ -7,6 +7,7 @@ import connectDB from "./config/db.js";
 import routes from "./Routers/index.js";
 
 dotenv.config();
+console.log("SESSION_SECRET =", process.env.SESSION_SECRET);  
 
 const app = express();
 
