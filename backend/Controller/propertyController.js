@@ -1,16 +1,16 @@
-import Property from "../models/Property.model.js";
+import Property from "../models/property.model.js";
 
 // Create Property
 export const createProperty = async (req, res) => {
+  console.log("REQ.FILE:", req.file);
   try {
-    const { title, description, location, price, images } = req.body;
+    const { title, description, location, price } = req.body;
 
     const property = await Property.create({
       title,
       description,
       location,
       price,
-      images,
       host: req.user._id,
     });
 

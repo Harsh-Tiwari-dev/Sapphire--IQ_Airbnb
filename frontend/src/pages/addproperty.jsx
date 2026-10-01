@@ -9,19 +9,32 @@ function AddProperty() {
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
   const [price, setPrice] = useState("");
-  const [image, setImage] = useState(""); 
+  const [imageFile, setImageFile] = useState(null);
   const [loading, setLoading] = useState(false);
+
+
+ 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
+
+     // 1. FormData banakar saara data pack karo
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("location", location);
+    formData.append("price", price);
+    formData.append("image", imageFile);
+
    
  
 
     try {
-      const response = await fetch("http://localhost:5000/api/properties",{
+      const response = await fetch("http://localhost:5000/api/properties/",{
         method: "POST",
+        body: formData,
     
       });
 
@@ -92,9 +105,9 @@ function AddProperty() {
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Image URL</label>
           <input
-            type="text"
-            value={image}
-            onChange={(e) => setImage(e.target.value)}
+            type="file"
+            accept="image/*"
+            onChange={(e) => setImageFile(e.target.files[0])}
             placeholder=""
             className="w-full p-2 border rounded-lg text-sm bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
             required

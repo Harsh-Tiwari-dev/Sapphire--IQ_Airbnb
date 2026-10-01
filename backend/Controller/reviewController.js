@@ -1,5 +1,5 @@
 import Review from "../models/Review.model.js";
-import Property from "../models/Property.model.js";
+import Property from "../models/property.model.js";
 
 // Create Review
 export const createReview = async (req, res) => {
