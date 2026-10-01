@@ -15,12 +15,12 @@ function Navbar() {
           Home
         </Link>
 
-        <Link to="/products" className="hover:text-blue-600">
-          Products
+        <Link to="/Property" className="hover:text-blue-600">
+          LISTINGS
         </Link>
 
         <Link to="/cart" className="hover:text-blue-600">
-          Cart
+          
         </Link>
 
         

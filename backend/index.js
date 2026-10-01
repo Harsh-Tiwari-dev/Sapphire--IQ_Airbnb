@@ -5,11 +5,21 @@ import passport from "./config/passport.js";
 
 import connectDB from "./config/db.js";
 import routes from "./Routers/index.js";
+import cors from "cors";
 
 dotenv.config();
 console.log("SESSION_SECRET =", process.env.SESSION_SECRET);  
 
 const app = express();
+
+
+
+app.use(
+  cors({
+    origin: "http://localhost:3002",
+    credentials: true,
+  })
+);
 
 // MongoDB
 connectDB();

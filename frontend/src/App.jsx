@@ -1,13 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 import Navbar from "./components/Navbar"
-import Home from "./pages/Home"
-import Products from "./pages/Products"
-import Cart from "./pages/Cart"
-import Signin from "./pages/signin"
-import Signup from "./pages/Signup"
-import ForgotPassword from "./pages/forgotpassword"
-import Checkout from "./pages/Checkout"
+import Home from "./pages/home"
+import Properties from "./pages/property"
+
+
+
 
 function App() {
   return (
@@ -16,12 +14,8 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/signin" element={<Signin />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/property" element={<Properties />} />
+       
       </Routes>
     </BrowserRouter>
   )

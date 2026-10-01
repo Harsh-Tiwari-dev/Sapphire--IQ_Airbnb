@@ -1,39 +1,39 @@
 import { useEffect, useState } from "react"
-import ProductCard from "../components/ProductCard"
+import PropertyCard from "../components/PropertyCard"
 
-function Products() {
-  const [products, setProducts] = useState([])
+function Properties() {
+  const [properties, setProperties] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState("")
 
   useEffect(() => {
-    const fetchProducts = async () => {
+    const fetchProperties = async () => {
       try {
-        const response = await fetch("http://localhost:8000/api/products")
+        const response = await fetch("http://localhost:5000/api/properties")
 
         if (!response.ok) {
-          throw new Error("Failed to fetch products")
+          throw new Error("Failed to fetch properties")
         }
 
         const data = await response.json()
-console.log("PRODUCT RESPONSE:", data)
-        setProducts(data.products)
+console.log("PROPERTIES RESPONSE:", data)
+        setProperties(data.properties)
       } catch (error) {
         console.error(error)
-        setError("Products DON'T load")
+        setError("Properties DON'T load")
       } finally {
         setLoading(false)
       }
     }
 
-    fetchProducts()
+    fetchProperties()
   }, [])
 
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <h1 className="text-2xl font-semibold">
-          Loading products...
+          Loading properties..
         </h1>
       </div>
     )
@@ -53,15 +53,15 @@ console.log("PRODUCT RESPONSE:", data)
     <div className="min-h-screen bg-gray-100 p-8">
 
       <h1 className="text-4xl font-bold text-center mb-10">
-        Our Products
+        Our Properties
       </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
 
-        {products.map((product) => (
-          <ProductCard
-            key={product._id}
-            product={product}
+        {properties.map((property) => (
+          <PropertyCard
+            key={property._id}
+            property={property}
           />
         ))}
 
@@ -71,4 +71,4 @@ console.log("PRODUCT RESPONSE:", data)
   )
 }
 
-export default Products
+export default Properties
