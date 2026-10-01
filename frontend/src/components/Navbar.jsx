@@ -19,8 +19,8 @@ function Navbar() {
           LISTINGS
         </Link>
 
-        <Link to="/cart" className="hover:text-blue-600">
-          
+        <Link to="/reviews" className="hover:text-blue-600">
+          REVIEWS
         </Link>
 
         
