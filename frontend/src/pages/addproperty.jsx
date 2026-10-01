@@ -29,7 +29,7 @@ function AddProperty() {
 
       if (response.ok) {
         alert("Property added successfully ");
-        navigate("/"); 
+        navigate("/property"); 
       } else {
         alert("Error: " + (data.message || data.error));
       }

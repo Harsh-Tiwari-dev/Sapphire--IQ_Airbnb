@@ -8,7 +8,7 @@ function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState("user");
+  const [role, setRole] = useState("guest");
   const [loading, setLoading] = useState(false);
 
   const handleSignup = async (e) => {
@@ -27,13 +27,13 @@ function Signup() {
 
       if (response.ok) {
         alert("Signup successfully ");
-        navigate("/login");
+        navigate("/property");
       } else {
         alert("Error: " + (data.message || data.error));
       }
     } catch (error) {
       console.error("Network Error:", error);
-      alert("Server se connect nahi ho pa raha hai.");
+      alert("Server does not connect.");
     } finally {
       setLoading(false);
     }
@@ -94,7 +94,7 @@ function Signup() {
             onChange={(e) => setRole(e.target.value)}
             className="w-full p-2.5 border rounded-lg text-sm bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
-            <option value="user">User / Guest</option>
+            <option value="user">Guest</option>
             <option value="host">Host</option>
           </select>
         </div>
