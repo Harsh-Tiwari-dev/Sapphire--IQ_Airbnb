@@ -6,21 +6,21 @@ function Navbar() {
       
       {/* Logo */}
       <Link to="/" className="text-2xl font-bold">
-        ShopEasy
+        Airbnb
       </Link>
 
       {/* Navigation */}
       <div className="flex items-center gap-8">
         <Link to="/" className="hover:text-blue-600">
-          Home
+          HOME
         </Link>
 
         <Link to="/Property" className="hover:text-blue-600">
           LISTINGS
         </Link>
 
-        <Link to="/reviews" className="hover:text-blue-600">
-          REVIEWS
+        <Link to="/addproperty" className="hover:text-blue-600">
+          ADD PROPERTY
         </Link>
 
         

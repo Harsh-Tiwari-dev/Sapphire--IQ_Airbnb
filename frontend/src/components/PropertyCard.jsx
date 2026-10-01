@@ -86,7 +86,7 @@ function PropertyCard({ property }) {
             
             <div className="max-h-32 overflow-y-auto mb-3 space-y-2">
               {reviews.length === 0 ? (
-                <p className="text-xs text-gray-500">Abhi tak koi review nahi hai.</p>
+                <p className="text-xs text-gray-500">no reviews yet</p>
               ) : (
                 reviews.map((rev, index) => (
                   <div key={index} className="text-xs bg-white p-2 rounded border">
@@ -106,7 +106,7 @@ function PropertyCard({ property }) {
               />
               <textarea 
                 value={comment} onChange={(e) => setComment(e.target.value)}
-                placeholder="Apna review likhein..."
+                placeholder="write your review here..."
                 className="w-full p-1 border rounded text-sm mb-2 bg-white"
                 rows="2" required
               />
