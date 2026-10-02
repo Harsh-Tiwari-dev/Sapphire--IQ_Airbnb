@@ -7,13 +7,30 @@ function PropertyCard({ property }) {
   const [reviews, setReviews] = useState([]);
   const [rating, setRating] = useState(5);
   const [comment, setComment] = useState("");
+  const [hasBooked, setHasBooked] = useState(false);
 
  
   useEffect(() => {
     if (showReviewBox) {
       fetchReviews();
+      checkIfUserBooked();
     }
   }, [showReviewBox]);
+
+
+  const checkIfUserBooked = async () => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/bookings/my`, {
+        credentials: "include" 
+      });
+      const data = await response.json();
+      if (response.ok) {
+        setHasBooked(data.hasBooked); 
+      }
+    } catch (error) {
+      console.error("Error checking booking:", error);
+    }
+  };
 
   const fetchReviews = async () => {
     try {
@@ -99,7 +116,7 @@ function PropertyCard({ property }) {
                 ))
               )}
             </div>
-
+{hasBooked ?(
             <form onSubmit={handleReviewSubmit}>
               <input 
                 type="number" min="1" max="5" value={rating} 
@@ -116,9 +133,13 @@ function PropertyCard({ property }) {
               <button type="submit" className="w-full py-1 bg-blue-600 text-white text-sm rounded">
                 Submit Review
               </button>
-            </form>
+            </form>):(
+              <p className="text-xs text-gray-500">You can only review after booking this property.</p>
+            )}
           </div>
         )}
+          </div>
+       
 
         <div className=" flex  justify-between mt-5">
             
@@ -142,7 +163,7 @@ function PropertyCard({ property }) {
 
       </div>
 
-    </div>
+    
   );
 }
 
