@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function PropertyCard({ property }) {
  
@@ -65,7 +66,7 @@ function PropertyCard({ property }) {
         </span>
       </div>
 
-      <div className="p-5">
+      <div className="p-5  align-items center" >
         <h2 className="text-xl font-semibold">
           {property.name}
         </h2>
@@ -78,6 +79,8 @@ function PropertyCard({ property }) {
         <p className="text-gray-600 mt-2">
           {property.description}
         </p>
+        
+       
 
         
         {showReviewBox && (
@@ -117,11 +120,23 @@ function PropertyCard({ property }) {
           </div>
         )}
 
-        <div className="flex items-center justify-between mt-5">
-          <span className="text-xl font-bold">
+        <div className=" flex  justify-between mt-5">
+            
+          <span className="text-xl   font-bold">
             ₹{property.price}
           </span>
-
+        <Link 
+  to="/booking" 
+  
+  state={{ 
+   
+    price: property.price,         
+             
+  }} 
+  className="bg-blue-600 text-white px-4 py-2 rounded"
+>
+  Book Now
+</Link>
          
         </div>
 
