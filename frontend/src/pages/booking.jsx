@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useLocation } from 'react-router-dom';
 
+
 import { useNavigate, Link } from "react-router-dom";
 
 function Booking() {
@@ -79,7 +80,7 @@ function Booking() {
         
         {/* Name Input */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Check-in Date</label>
           <input
             type="date"
             value={checkin}
@@ -92,7 +93,7 @@ function Booking() {
 
         {/* Email Input */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Check-out Date</label>
           <input
             type="date"
             value={checkout}
@@ -105,7 +106,7 @@ function Booking() {
 
         {/* Password Input */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Total Price</label>
           <input
             type="text"
             value={`₹ ${calculateTotalPrice()}`}
@@ -119,7 +120,7 @@ function Booking() {
 
         {/* Role Selection (Dropdown) */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Select Role</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Select Status</label>
           <select
             value={status}
             onChange={(e) => setStatus(e.target.value)}
@@ -138,18 +139,12 @@ function Booking() {
           disabled={loading}
           className="w-full py-2.5 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition"
         >
-          {loading ? "Signing up..." : "Sign Up"}
+            {loading ? "Booking..." : "Book Now"}
         </button>
 
       </form>
 
-      {/* Login Link */}
-      <p className="text-center text-sm text-gray-600 mt-4">
-        Already have an account?{" "}
-        <Link to="/login" className="text-blue-600 font-medium hover:underline">
-          Login here
-        </Link>
-      </p>
+      
     </div>
   );
 }

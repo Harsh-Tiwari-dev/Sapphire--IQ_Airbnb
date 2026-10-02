@@ -6,6 +6,16 @@ export const createProperty = async (req, res) => {
   try {
     const { title, description, location, price } = req.body;
 
+
+
+
+    const imageUrl = await uploadOnCloudinary(req.file.path);
+     if (!imageUrl) {  
+      return res.status(500).json({
+        message: "Image upload failed",
+      });
+    }
+
     const property = await Property.create({
       title,
       description,
