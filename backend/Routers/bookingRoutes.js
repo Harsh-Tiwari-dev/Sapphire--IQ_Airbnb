@@ -10,9 +10,8 @@ import {
 
 const router = express.Router();
 
-// Create Booking
-router.post("/",  createBooking);
 
+router.post("/bookings", createBooking);
 // Get My Bookings
 router.get("/my",  getMyBookings);
 

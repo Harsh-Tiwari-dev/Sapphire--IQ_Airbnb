@@ -6,12 +6,7 @@ export const createBooking = async (req, res) => {
   try {
 
      
-    if (req.user.role !== "guest") {
-      return res.status(403).json({
-        success: false,
-        message: "Access denied! Hosts are not allowed to make bookings.",
-      });
-    }
+  
 
     const {
       property,

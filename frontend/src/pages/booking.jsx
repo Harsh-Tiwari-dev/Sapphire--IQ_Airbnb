@@ -2,21 +2,21 @@ import { useState } from "react";
 import { useLocation } from 'react-router-dom';
 
 
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 
 function Booking() {
     
   const navigate = useNavigate();
   const location = useLocation();
+ 
 
   const pricePerDay = location.state?.price || 0; 
+ 
 
 
   
   const [checkin, setCheckin] = useState("");
   const [checkout, setCheckout] = useState("");
-  
-  const [status, setstatus] = useState("");
   const [loading, setLoading] = useState(false);
 
 
@@ -35,21 +35,25 @@ function Booking() {
     
     
     return diffDays > 0 ? diffDays * pricePerDay : 0;}
+    const h=calculateTotalPrice();
 
   const handleSignup = async (e) => {
     e.preventDefault();
     setLoading(true);
-     const h=calculateTotalPrice();
+     
      const fulldata={
         checkin:checkin,
         checkout:checkout,
         totalprice:h,
+      
      }
+
 
     try {
       const response = await fetch("http://localhost:5000/api/bookings", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+       credentials: "include", 
        
         body: JSON.stringify({ fulldata }),
       });
@@ -111,27 +115,15 @@ function Booking() {
             type="text"
             value={`₹ ${calculateTotalPrice()}`}
             
-            readonly
+            readOnly
             placeholder="Your total price"
             className="w-full p-2.5 border rounded-lg text-sm bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
         </div>
 
-        {/* Role Selection (Dropdown) */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Select Status</label>
-          <select
-            value={status}
-            onChange={(e) => setStatus(e.target.value)}
-            className="w-full p-2.5 border rounded-lg text-sm bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          >
-            <option value="confirmed">Confirmed</option>
-            <option value="pending">Pending</option>
-            <option value="cancelled">Cancelled</option>
-
-          </select>
-        </div>
+   
+       
 
         {/* Submit Button */}
         <button

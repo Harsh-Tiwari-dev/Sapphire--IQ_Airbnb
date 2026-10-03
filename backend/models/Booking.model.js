@@ -11,7 +11,8 @@ const bookingSchema = new mongoose.Schema(
     guest: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      required: true,
+      
+      default: null,
     },
 
     checkIn: {

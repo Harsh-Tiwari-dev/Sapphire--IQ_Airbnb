@@ -6,6 +6,7 @@ import Properties from "./pages/property"
 import AddProperty from "./pages/addproperty"
 import Signup from "./pages/signup"
 import Booking from "./pages/booking"
+import LoginPage from "./pages/login"
 
 
 
@@ -21,6 +22,7 @@ function App() {
         <Route path="/addproperty" element={<AddProperty />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/booking" element={<Booking />} />
+        <Route path="/login" element={<LoginPage />} />
       </Routes>
     </BrowserRouter>
   )
