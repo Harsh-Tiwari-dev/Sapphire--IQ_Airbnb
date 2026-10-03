@@ -16,7 +16,7 @@ function Booking() {
   const [checkin, setCheckin] = useState("");
   const [checkout, setCheckout] = useState("");
   
-  const [status, setstatus] = useState("pending");
+  const [status, setstatus] = useState("");
   const [loading, setLoading] = useState(false);
 
 

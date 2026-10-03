@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 function AddProperty() {
   const navigate = useNavigate();
 
+
  
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -11,6 +12,7 @@ function AddProperty() {
   const [price, setPrice] = useState("");
   const [imageFile, setImageFile] = useState(null);
   const [loading, setLoading] = useState(false);
+  const[host,setHost]=useState("");
 
 
  
@@ -20,7 +22,7 @@ function AddProperty() {
     setLoading(true);
 
 
-     // 1. FormData banakar saara data pack karo
+     
     const formData = new FormData();
     formData.append("title", title);
     formData.append("description", description);

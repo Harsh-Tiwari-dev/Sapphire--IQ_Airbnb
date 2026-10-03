@@ -14,7 +14,7 @@ import authMiddleware from "../middleware/authMiddleware.js";
 const router = express.Router();
 
 // Create Property
-router.post("/", upload.single("image"), createProperty);
+router.post("/",authMiddleware, upload.single("image"), createProperty);
 
 // Get All Properties
 router.get("/", getAllProperties);

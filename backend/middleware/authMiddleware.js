@@ -1,4 +1,4 @@
-const authMiddleware = (requiredRole = null) => {
+const authMiddleware = (requiredRole = host) => {
   return (req, res, next) => {
     
     if (!req.isAuthenticated()) {
