@@ -12,7 +12,7 @@ function AddProperty() {
   const [price, setPrice] = useState("");
   const [imageFile, setImageFile] = useState(null);
   const [loading, setLoading] = useState(false);
-  const[host,setHost]=useState("");
+  
 
 
  
@@ -57,74 +57,75 @@ function AddProperty() {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 bg-white p-6 rounded-xl shadow-md border">
-      <h2 className="text-2xl font-bold mb-5 text-center text-gray-800">
+    <div className="min-h-screen bg-black/10 backdrop-blur-md border border-whit/20  p-6">
+    <div className="max-w-md mx-auto mt-10 bg-white p-6 rounded-xl shadow-lg border border-gray-800 hover:border-sky-400 hover:shadow-[0_0_30px_rgba(56,189,248,0.4)] duration-300">
+      <h2 className="text-2xl font-bold mb-5 py-4 text-center text-gray-800 tracking-tight bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
         Add New Property
       </h2>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         
         {/* Title Input */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Title</label>
+       <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1 text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-red-500 to-yellow-500">Title</label>
           <input
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Name of the property"
-            className="w-full p-2 border rounded-lg text-sm bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-2 border rounded-lg text-sm bg-gray-50 focus:outline-none focus:ring-2 focus:ring-orange-500"
             required
           />
         </div>
 
         {/* Location Input */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Location</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1 bg-clip-text text-transparent bg-gradient-to-r from-green-500 via-blue-500 to-purple-500">Location</label>
           <input
             type="text"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
             placeholder="Name of the city or area"
-            className="w-full p-2 border rounded-lg text-sm bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-2 border rounded-lg text-sm bg-gray-50 focus:outline-none focus:ring-2 focus:ring-green-500"
             required
           />
         </div>
 
         {/* Price Input */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Price per night (₹)</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1 bg-gradient-to-r from-yellow-400 via-orage-500 to-red-500 text-transparent bg-clip-text">Price per night (₹)</label>
           <input
             type="number"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
             placeholder="Price in INR"
-            className="w-full p-2 border rounded-lg text-sm bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-2 border rounded-lg text-sm bg-gray-50 focus:outline-none focus:ring-2 focus:ring-yellow-500"
             required
           />
         </div>
 
         {/* Image URL Input */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Image URL</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1 bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500">Image URL</label>
           <input
             type="file"
             accept="image/*"
             onChange={(e) => setImageFile(e.target.files[0])}
             placeholder=""
-            className="w-full p-2 border rounded-lg text-sm bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-2 border rounded-lg text-sm bg-gray-50 focus:outline-none focus:ring-2 focus:ring-pink-500"
             required
           />
         </div>
 
         {/* Description Input */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1 bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500">Description</label>
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             placeholder="Describe the property, its amenities, and any other relevant details."
             rows="3"
-            className="w-full p-2 border rounded-lg text-sm bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-2 border rounded-lg text-sm bg-gray-50 focus:outline-none focus:ring-2 focus:ring-sky-500"
             required
           />
         </div>
@@ -139,6 +140,7 @@ function AddProperty() {
         </button>
 
       </form>
+    </div>
     </div>
   );
 }
