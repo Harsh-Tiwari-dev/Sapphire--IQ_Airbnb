@@ -5,6 +5,7 @@ function Properties() {
   const [properties, setProperties] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState("")
+  const[searchterm,setSearchTerm]=useState("")
 
   useEffect(() => {
     const fetchProperties = async () => {
@@ -28,6 +29,10 @@ console.log("PROPERTIES RESPONSE:", data)
 
     fetchProperties()
   }, [])
+  const filteredProperties = properties.filter((property) =>
+    property.location.toLowerCase().includes(searchterm.toLowerCase())
+  );
+
 
   if (loading) {
     return (
@@ -52,13 +57,25 @@ console.log("PROPERTIES RESPONSE:", data)
   return (
     <div className="min-h-screen bg-gray-100 p-8">
 
+
+
+
       <h1 className="text-4xl font-bold text-center mb-10">
         OUR PROPERTIES FOR BOOKING AND STAYING
       </h1>
-
+      <div className="flex justify-center mb-8">
+      <label className="gap-10 text-3xl font-bold mr-2">Enter location:</label>
+      <input 
+        type="text" 
+        placeholder="Search for a location..." 
+        className="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        value={searchterm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+</div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
 
-        {properties.map((property) => (
+        {(searchterm==="" ? properties : filteredProperties).map((property) => (
           <PropertyCard
             key={property._id}
             property={property}

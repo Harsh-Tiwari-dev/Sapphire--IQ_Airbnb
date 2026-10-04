@@ -58,6 +58,11 @@ function AddProperty() {
 
   return (
     <div className="min-h-screen bg-black/10 backdrop-blur-md border border-whit/20  p-6">
+      <div class="w-full isolate space-y-6">
+      <h1 class="text-2xl sm:text-2xl transform -rotate-12 select-none font-black tracking-widest text-sky-400 whitespace-nowrap mt-4 mr-2 ">
+       
+      </h1>
+    
     <div className="max-w-md mx-auto mt-10 bg-white p-6 rounded-xl shadow-lg border border-gray-800 hover:border-sky-400 hover:shadow-[0_0_30px_rgba(56,189,248,0.4)] duration-300">
       <h2 className="text-2xl font-bold mb-5 py-4 text-center text-gray-800 tracking-tight bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
         Add New Property
@@ -140,6 +145,7 @@ function AddProperty() {
         </button>
 
       </form>
+    </div>
     </div>
     </div>
   );
