@@ -26,6 +26,6 @@ router.post(
 router.post("/logout", passport.authenticate("local"),  logoutUser);
 
 // Current logged-in user
-router.get("/me",   getCurrentUser);
+router.get("/me", getCurrentUser);
 
 export default router;
