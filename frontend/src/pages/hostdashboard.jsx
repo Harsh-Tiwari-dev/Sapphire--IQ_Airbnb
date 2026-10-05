@@ -1,15 +1,24 @@
 import React, { useState, useEffect } from "react";
 
-
-
-
-
-
 function HostDashboard() {
-
+const [properties, setProperties] = useState([]);
 useEffect(() => {
     fetchProperties();
   }, []);
+   
+
+const deleteProperty = async (propertyId) => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/properties/${propertyId}`, {
+        method: "DELETE",
+        credentials: "include", 
+      });
+
+
+    }catch (error) {
+      console.error("Error deleting property:", error);
+    }
+
     const [properties, setProperties] = useState([]);
 const fetchProperties = async () => {
       try {
@@ -33,7 +42,7 @@ console.log("PROPERTIES RESPONSE:", data)
       }
     }
 
-
+}
 
 return(
 <main className="min-h-screen bg-gray-100">
@@ -98,19 +107,12 @@ return(
 >
   
 </Link>
-        <Link 
-  to="/deleteproperty" 
+        <button
+          className="bg-red-600 text-white px-4 py-2 rounded"
+          onClick={() => deleteProperty(property._id)}
+
   
-  state={{ 
-   
-   
-            
-             
-  }} 
-  className="bg-blue-600 text-white px-4 py-2 rounded"
->
-  
-</Link>
+></button>
 
          
         </div></div>))}

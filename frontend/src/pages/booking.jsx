@@ -75,7 +75,12 @@ function Booking() {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-16 bg-white p-6 rounded-xl shadow-md border">
+    <div className="min-h-screen bg-black/10 backdrop-blur-md border border-whit/20  p-6">
+
+      <h1 className="text-6xl md:text-9xl font-extrabold text-gray-300/50 animate-bounce text-rose-300 transform -rotate-12 tracking-wider whitespace-nowrap">
+          Affordable Price
+        </h1>
+    <div className="max-w-md mx-auto mt-16 bg-white p-6 rounded-xl shadow-md border animmate-rotate-12  ">
       <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
         Book Your Stay
       </h2>
@@ -137,6 +142,10 @@ function Booking() {
       </form>
 
       
+    </div>
+     <h1 className="text-6xl md:text-9xl font-extrabold   animate-bounce animate-pulse text-gray-300/50 text-rose-300 transform -rotate-12 tracking-wider whitespace-nowrap">
+          Affordable Price
+        </h1>
     </div>
   );
 }
